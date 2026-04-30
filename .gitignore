@@ -1,0 +1,25 @@
+# Build / pacotes do tema
+*.zip
+*.tar.gz
+
+# Vídeo pesado do hero (subido manualmente no servidor)
+assets/videos/*.mov
+assets/videos/*.mp4
+assets/videos/*.webm
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs e cache
+*.log
+*.cache
+.tmp/
