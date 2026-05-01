@@ -36,8 +36,8 @@
 	--c-tier-premium:      #680718;
 	--c-tier-highlight:    #00364B;
 	--c-tier-gota:         #40023F;
-	--c-tier-vitoria:      #5F2946;
-	--c-tier-eu-sou:       #1F4D2B;
+	--c-tier-vitoria:      #1F4D2B;
+	--c-tier-eu-sou:       #3D1B5C;
 	--c-tier-vitoria-hoje: #5C3A00;
 
 	--container: 1280px;
@@ -913,8 +913,8 @@ p { margin: 0; }
 .ticket-card[data-tier="premium"]      { --tk-accent: var(--c-tier-premium);      --tk-accent-rgb: 104, 7, 24;  }
 .ticket-card[data-tier="highlight"]    { --tk-accent: var(--c-tier-highlight);    --tk-accent-rgb: 0, 54, 75;   }
 .ticket-card[data-tier="gota"]         { --tk-accent: var(--c-tier-gota);         --tk-accent-rgb: 64, 2, 63;   }
-.ticket-card[data-tier="vitoria"]      { --tk-accent: var(--c-tier-vitoria);      --tk-accent-rgb: 95, 41, 70;  }
-.ticket-card[data-tier="eu-sou"]       { --tk-accent: var(--c-tier-eu-sou);       --tk-accent-rgb: 31, 77, 43;  }
+.ticket-card[data-tier="vitoria"]      { --tk-accent: var(--c-tier-vitoria);      --tk-accent-rgb: 31, 77, 43;  }
+.ticket-card[data-tier="eu-sou"]       { --tk-accent: var(--c-tier-eu-sou);       --tk-accent-rgb: 61, 27, 92;  }
 .ticket-card[data-tier="vitoria-hoje"] { --tk-accent: var(--c-tier-vitoria-hoje); --tk-accent-rgb: 92, 58, 0;   }
 .ticket-card .tk-banner    { background: linear-gradient(135deg, var(--tk-accent), rgba(var(--tk-accent-rgb), .8)); }
 .ticket-card .tk-icon[data-active="true"] {

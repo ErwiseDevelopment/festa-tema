@@ -89,7 +89,7 @@ $tickets = array(
 	),
 	array(
 		'tier'         => 'eu-sou',
-		'name'         => "EU SOU\nVITORIOSO",
+		'name'         => "INGRESSO\nEU SOU VITORIOSO",
 		'tag'          => 'Presencial',
 		'subtitle'     => 'Acesso aos 3 dias do evento (24, 25 e 26/07) com vivência exclusiva na Comunidade Água Viva',
 		'price'        => '12x de R$ 29,90',
@@ -107,7 +107,7 @@ $tickets = array(
 	),
 	array(
 		'tier'         => 'vitoria-hoje',
-		'name'         => "VITÓRIA\nDE HOJE",
+		'name'         => "INGRESSO\nVITÓRIA DE HOJE",
 		'tag'          => 'Presencial',
 		'subtitle'     => 'Acesso aos dias 25 e 26/07 com lugar premium reservado',
 		'price'        => '12x de R$ 20,97',
