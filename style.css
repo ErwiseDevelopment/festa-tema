@@ -1,0 +1,18 @@
+/*
+Theme Name: Festa do Sangue de Jesus
+Theme URI: https://festadosanguedejesus.com.br
+Author: Comunidade Água Viva
+Author URI: https://comunidadeaguaviva.com
+Description: Tema WordPress oficial do site Festa do Sangue de Jesus 2026 — Comunidade Água Viva. Refatorado a partir do projeto React/Vite original (Tailwind), com Cinzel/Playfair/Inter, paleta vermelho profundo + dourado + teal e seções one-page (hero, impacto, sobre, motivos, ingressos, convidados, contagem, localização, declaração, patrocínio e FAQ).
+Version: 1.2.1
+Requires at least: 6.0
+Tested up to: 6.5
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: festadosanguedejesus
+Update URI: https://festadosanguedejesus.com.br/wp-content/uploads/fsdj-theme/update.json
+Tags: one-page, religious, dark, gold, event
+*/
+
+/* O CSS real fica em assets/css/main.css. Esse arquivo só carrega o cabeçalho do tema. */
