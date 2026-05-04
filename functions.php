@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.1.2' );
+define( 'FSDJ_THEME_VERSION', '1.2.2' );
 
 /**
  * Atualização automática do tema (servidor próprio + Update URI).
