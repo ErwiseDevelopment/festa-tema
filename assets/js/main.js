@@ -150,16 +150,6 @@
 			btn.addEventListener('click', function (e) {
 				e.stopPropagation();
 				var open = wrap.getAttribute('data-open') === 'true';
-				// fecha as outras (acordeão)
-				document.querySelectorAll('.sp-wrap').forEach(function (w) {
-					if (w !== wrap) {
-						w.setAttribute('data-open', 'false');
-						var l = w.querySelector('.sp-detail-toggle__label');
-						if (l) l.textContent = 'Ver detalhes';
-						var b = w.querySelector('[data-toggle-sp]');
-						if (b) b.setAttribute('aria-expanded', 'false');
-					}
-				});
 				wrap.setAttribute('data-open', open ? 'false' : 'true');
 				btn.setAttribute('aria-expanded', open ? 'false' : 'true');
 				if (label) label.textContent = open ? 'Ver detalhes' : 'Fechar detalhes';

@@ -854,6 +854,19 @@ p { margin: 0; }
 	transition: transform .3s ease;
 }
 .tk-cta:hover { transform: scale(1.02); color: #fff; }
+/* Esgotado: preço e botão neutralizados */
+.tk-price--soldout .tk-price__main {
+	color: #b91c1c;
+	letter-spacing: .15em;
+}
+.tk-cta--soldout {
+	background: rgba(120, 120, 120, .25);
+	color: rgba(255, 255, 255, .55);
+	cursor: not-allowed;
+	box-shadow: none;
+}
+.tk-cta--soldout:hover { transform: none; color: rgba(255, 255, 255, .55); }
+.ticket-card .tk-cta--soldout { background: rgba(120, 120, 120, .25); box-shadow: none; }
 .tk-foot-line { height: 2px; }
 .tk-detail-toggle {
 	width: 100%;
@@ -1305,6 +1318,119 @@ p { margin: 0; }
 	text-transform: uppercase;
 	letter-spacing: .2em;
 	margin: 3rem 0 0;
+}
+
+/* Níveis de patrocínio — Ouro / Prata / Bronze */
+.sponsor__levels {
+	display: flex;
+	flex-direction: column;
+	gap: 3.5rem;
+	max-width: 64rem;
+	margin: 0 auto;
+}
+.sponsor__level { text-align: center; }
+
+.sponsor__logos--ouro,
+.sponsor__logos--prata,
+.sponsor__logos--bronze {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 2rem;
+	max-width: none;
+}
+
+/* Tamanhos por nível (altura controla a escala) */
+.sponsor__logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem 1.25rem;
+	border-radius: .5rem;
+	border: 1px solid rgba(255,255,255,.08);
+	background: rgba(255,255,255,.04);
+	backdrop-filter: blur(6px);
+}
+.sponsor__logo img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	object-fit: contain;
+}
+
+.sponsor__logos--ouro   .sponsor__logo img { height: 6.325rem; }
+.sponsor__logos--prata  .sponsor__logo img { height: 4.6rem; }
+.sponsor__logos--bronze .sponsor__logo img { height: 3.163rem; }
+
+@media (min-width: 768px) {
+	.sponsor__logos--ouro   .sponsor__logo img { height: 8.625rem; }
+	.sponsor__logos--prata  .sponsor__logo img { height: 5.75rem; }
+	.sponsor__logos--bronze .sponsor__logo img { height: 3.738rem; }
+	.sponsor__logos--ouro   { gap: 3rem; }
+	.sponsor__logos--prata  { gap: 2.5rem; }
+	.sponsor__logos--bronze { gap: 2rem; }
+}
+
+/* Apoiadores — faixa menor logo abaixo dos Patrocinadores */
+.sponsor__supporters {
+	max-width: 56rem;
+	margin: 5rem auto 0;
+	padding-top: 3.5rem;
+	border-top: 1px solid rgba(212,175,55,.18);
+}
+.sponsor__supporters-title {
+	font-family: var(--font-cinzel);
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: .25em;
+	font-size: clamp(1rem, 2.2vw, 1.375rem);
+	color: var(--c-gold-2);
+	margin: 0 0 2rem;
+}
+.sponsor__supporters-logos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	gap: 1.25rem;
+}
+@media (min-width: 768px) { .sponsor__supporters-logos { gap: 2rem; } }
+.sponsor__supporters-logo {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: .65rem 1rem;
+	border-radius: .5rem;
+	border: 1px solid rgba(255,255,255,.08);
+	background: rgba(255,255,255,.04);
+	backdrop-filter: blur(6px);
+}
+.sponsor__supporters-logo img {
+	display: block;
+	width: auto;
+	max-width: 100%;
+	height: 2.5rem;
+	object-fit: contain;
+}
+@media (min-width: 768px) {
+	.sponsor__supporters-logo img { height: 3rem; }
+}
+.sponsor__supporters-slot {
+	width: 7rem;
+	height: 3.25rem;
+	border-radius: .5rem;
+	border: 1px solid rgba(255,255,255,.1);
+	background: rgba(255,255,255,.05);
+	backdrop-filter: blur(6px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: rgba(255,255,255,.2);
+	font-family: var(--font-inter);
+	font-size: .75rem;
+	text-transform: uppercase;
+	letter-spacing: .2em;
 }
 
 /* ======================================================================

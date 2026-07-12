@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.2.2' );
+define( 'FSDJ_THEME_VERSION', '1.3.0' );
 
 /**
  * Atualização automática do tema (servidor próprio + Update URI).
@@ -149,3 +149,176 @@ add_filter( 'fsdj_config', function ( $cfg ) {
 	}
 	return $cfg;
 } );
+
+/**
+ * Patrocinadores da Vida — número de slots por nível no Customizer.
+ * Ajustar aqui caso precise de mais espaços.
+ */
+function fsdj_sponsor_slots() {
+	return array(
+		'ouro'   => array( 'label' => 'Ouro',   'count' => 6 ),
+		'prata'  => array( 'label' => 'Prata',  'count' => 8 ),
+		'bronze' => array( 'label' => 'Bronze', 'count' => 12 ),
+	);
+}
+
+/**
+ * Customizer — campos de upload para os logos de patrocinadores por nível.
+ */
+function fsdj_customize_register_sponsors( $wp_customize ) {
+	$wp_customize->add_section( 'fsdj_sponsors', array(
+		'title'       => __( 'FSDJ — Patrocinadores da Vida', 'festadosanguedejesus' ),
+		'description' => __( 'Faça upload dos logos para cada nível. Ouro aparece maior, Prata médio e Bronze menor.', 'festadosanguedejesus' ),
+		'priority'    => 41,
+	) );
+
+	foreach ( fsdj_sponsor_slots() as $tier => $cfg ) {
+		for ( $i = 1; $i <= $cfg['count']; $i++ ) {
+			$img_key = "fsdj_sponsor_{$tier}_{$i}_image";
+
+			$wp_customize->add_setting( $img_key, array(
+				'default'           => '',
+				'sanitize_callback' => 'absint',
+			) );
+			$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, $img_key, array(
+				'label'     => sprintf( '%s — Logo #%d', $cfg['label'], $i ),
+				'section'   => 'fsdj_sponsors',
+				'mime_type' => 'image',
+			) ) );
+		}
+	}
+}
+add_action( 'customize_register', 'fsdj_customize_register_sponsors' );
+
+/**
+ * Lê os patrocinadores cadastrados no Customizer agrupados por nível.
+ * Retorna apenas os slots que têm imagem.
+ */
+function fsdj_get_sponsors() {
+	$out = array();
+	foreach ( fsdj_sponsor_slots() as $tier => $cfg ) {
+		$logos = array();
+		for ( $i = 1; $i <= $cfg['count']; $i++ ) {
+			$att_id = (int) get_theme_mod( "fsdj_sponsor_{$tier}_{$i}_image" );
+			if ( ! $att_id ) { continue; }
+			$src = wp_get_attachment_image_url( $att_id, 'large' );
+			if ( ! $src ) { continue; }
+			$logos[] = array(
+				'src' => $src,
+				'alt' => get_post_meta( $att_id, '_wp_attachment_image_alt', true ),
+			);
+		}
+		$out[ $tier ] = array(
+			'logos' => $logos,
+		);
+	}
+	return $out;
+}
+
+/**
+ * Apoiadores — número de slots de logo disponíveis no Customizer.
+ * Aumentar o número caso precise de mais espaços.
+ */
+function fsdj_apoiador_slots() {
+	return 12;
+}
+
+/**
+ * Customizer — campos de upload para os logos dos apoiadores.
+ */
+function fsdj_customize_register_apoiadores( $wp_customize ) {
+	$wp_customize->add_section( 'fsdj_apoiadores', array(
+		'title'       => __( 'FSDJ — Apoiadores', 'festadosanguedejesus' ),
+		'description' => __( 'Faça upload dos logos dos apoiadores. Aparecem em uma faixa menor, logo abaixo dos Patrocinadores da Vida.', 'festadosanguedejesus' ),
+		'priority'    => 42,
+	) );
+
+	for ( $i = 1; $i <= fsdj_apoiador_slots(); $i++ ) {
+		$img_key = "fsdj_apoiador_{$i}_image";
+		$wp_customize->add_setting( $img_key, array(
+			'default'           => '',
+			'sanitize_callback' => 'absint',
+		) );
+		$wp_customize->add_control( new WP_Customize_Media_Control( $wp_customize, $img_key, array(
+			'label'     => sprintf( 'Apoiador — Logo #%d', $i ),
+			'section'   => 'fsdj_apoiadores',
+			'mime_type' => 'image',
+		) ) );
+	}
+}
+add_action( 'customize_register', 'fsdj_customize_register_apoiadores' );
+
+/**
+ * Lê os apoiadores cadastrados no Customizer.
+ * Retorna apenas os slots que têm imagem.
+ */
+function fsdj_get_apoiadores() {
+	$logos = array();
+	for ( $i = 1; $i <= fsdj_apoiador_slots(); $i++ ) {
+		$att_id = (int) get_theme_mod( "fsdj_apoiador_{$i}_image" );
+		if ( ! $att_id ) { continue; }
+		$src = wp_get_attachment_image_url( $att_id, 'large' );
+		if ( ! $src ) { continue; }
+		$logos[] = array(
+			'src' => $src,
+			'alt' => get_post_meta( $att_id, '_wp_attachment_image_alt', true ),
+		);
+	}
+	return $logos;
+}
+
+/**
+ * Ingressos — modalidades que podem ser marcadas como Esgotado.
+ * A chave (tier) deve bater com o 'tier' usado em
+ * template-parts/section-tickets.php.
+ */
+function fsdj_ticket_tiers() {
+	return array(
+		'premium'      => 'Passaporte Desperta Vitorioso',
+		'highlight'    => 'Passaporte Vitorioso',
+		'gota'         => 'Passaporte Gota da Vitória',
+		'vitoria'      => 'Ingresso Vitória (gratuito)',
+		'eu-sou'       => 'Ingresso Eu Sou Vitorioso',
+		'vitoria-hoje' => 'Ingresso Vitória de Hoje',
+	);
+}
+
+/**
+ * Sanitiza um checkbox do Customizer (retorna 1 ou 0).
+ */
+function fsdj_sanitize_checkbox( $checked ) {
+	return ( isset( $checked ) && true === (bool) $checked ) ? 1 : 0;
+}
+
+/**
+ * Customizer — marcar/desmarcar cada modalidade de ingresso como Esgotado.
+ */
+function fsdj_customize_register_tickets( $wp_customize ) {
+	$wp_customize->add_section( 'fsdj_tickets', array(
+		'title'       => __( 'FSDJ — Ingressos (Esgotado)', 'festadosanguedejesus' ),
+		'description' => __( 'Marque para exibir "ESGOTADO" no lugar do preço e do botão. Desmarque para voltar a vender.', 'festadosanguedejesus' ),
+		'priority'    => 43,
+	) );
+
+	foreach ( fsdj_ticket_tiers() as $tier => $label ) {
+		$key = 'fsdj_soldout_' . str_replace( '-', '_', $tier );
+		$wp_customize->add_setting( $key, array(
+			'default'           => 0,
+			'sanitize_callback' => 'fsdj_sanitize_checkbox',
+		) );
+		$wp_customize->add_control( $key, array(
+			'label'   => sprintf( 'Esgotado — %s', $label ),
+			'section' => 'fsdj_tickets',
+			'type'    => 'checkbox',
+		) );
+	}
+}
+add_action( 'customize_register', 'fsdj_customize_register_tickets' );
+
+/**
+ * Retorna se uma modalidade está marcada como Esgotada no Customizer.
+ */
+function fsdj_is_sold_out( $tier ) {
+	$key = 'fsdj_soldout_' . str_replace( '-', '_', $tier );
+	return (bool) get_theme_mod( $key, 0 );
+}

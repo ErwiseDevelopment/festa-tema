@@ -29,9 +29,9 @@ $tickets = array(
 		'cta_link_key' => 'ingresso_experiencia',
 		'details'      => array(
 			array( 'text' => 'Acesso aos dias 24, 25 e 26 de Julho.', 'bold' => true ),
-			array( 'text' => 'A experiência completa e inesquecível! Além de garantir seu lugar na frente, você terá uma vivência exclusiva na Comunidade Água Viva no dia 24/07. Participe da Live do Terço da Vitória e desfrute de um momento íntimo de fotos e autógrafos com a nossa fundadora, Raquel.', 'bold' => true ),
+			array( 'text' => 'A experiência completa e inesquecível! Além de garantir seu lugar na frente, você terá uma vivência exclusiva na Comunidade Água Viva no dia 24/07.', 'bold' => true ),
 			array( 'text' => 'Lugar exclusivo na festa, próximo ao palco' ),
-			array( 'text' => 'Kit premium (terço, cruz, livro "7 Gotas de Vitória", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta, ato de consagração impresso e brindes naturais da comunidade)' ),
+			array( 'text' => 'Kit do passaporte (terço, cruz, livro "7 Gotas de Vitória", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta, ato de consagração impresso e brindes naturais da comunidade)' ),
 			array( 'text' => 'Incluso um ano de acesso à plataforma EAD CAV (Caminho de Cura Água Viva)' ),
 		),
 	),
@@ -124,6 +124,15 @@ $tickets = array(
 		),
 	),
 );
+
+/**
+ * Ordem de exibição dos cards (do social/gratuito ao mais completo).
+ * Basta reordenar os tiers abaixo para mudar a sequência, sem mexer nos blocos acima.
+ */
+$fsdj_ticket_order = array( 'vitoria', 'vitoria-hoje', 'eu-sou', 'gota', 'highlight', 'premium' );
+usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
+	return array_search( $a['tier'], $fsdj_ticket_order, true ) <=> array_search( $b['tier'], $fsdj_ticket_order, true );
+} );
 ?>
 <section class="tickets" id="ingressos">
 	<div class="tickets__radial"></div>
@@ -191,18 +200,30 @@ $tickets = array(
 								<?php endforeach; ?>
 							</div>
 
-							<div class="tk-price">
-								<p class="tk-price__main"><?php echo nl2br( esc_html( $t['price'] ) ); ?></p>
-								<?php if ( $t['total'] ) : ?>
-									<p class="tk-price__total">Total: <?php echo esc_html( $t['total'] ); ?></p>
-								<?php endif; ?>
-							</div>
+							<?php if ( fsdj_is_sold_out( $t['tier'] ) ) : ?>
+								<div class="tk-price tk-price--soldout">
+									<p class="tk-price__main">ESGOTADO</p>
+								</div>
 
-							<div class="tk-spacer"></div>
+								<div class="tk-spacer"></div>
 
-							<a class="tk-cta" href="<?php echo esc_url( fsdj_cfg( $t['cta_link_key'] ) ); ?>" target="_blank" rel="noopener">
-								Garantir minha vaga
-							</a>
+								<span class="tk-cta tk-cta--soldout" aria-disabled="true">
+									Esgotado
+								</span>
+							<?php else : ?>
+								<div class="tk-price">
+									<p class="tk-price__main"><?php echo nl2br( esc_html( $t['price'] ) ); ?></p>
+									<?php if ( $t['total'] ) : ?>
+										<p class="tk-price__total">Total: <?php echo esc_html( $t['total'] ); ?></p>
+									<?php endif; ?>
+								</div>
+
+								<div class="tk-spacer"></div>
+
+								<a class="tk-cta" href="<?php echo esc_url( fsdj_cfg( $t['cta_link_key'] ) ); ?>" target="_blank" rel="noopener">
+									Garantir minha vaga
+								</a>
+							<?php endif; ?>
 						</div>
 
 						<div class="tk-foot-line"></div>
