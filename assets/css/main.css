@@ -869,6 +869,38 @@ p { margin: 0; }
 }
 .tk-cta--soldout:hover { transform: none; color: rgba(255, 255, 255, .55); }
 .ticket-card .tk-cta.tk-cta--soldout { background: rgba(120, 120, 120, .25); box-shadow: none; }
+/* Gratuito esgotado: mantém a palavra "Gratuito" em CINZA (em vez do vermelho
+   do ESGOTADO genérico). Especificidade 0,3,0 e vem depois da regra
+   .tk-price--soldout p/ vencê-la. */
+.ticket-card .tk-price--free-soldout .tk-price__main {
+	color: #6b7280;
+	letter-spacing: normal;
+}
+/* Faixa diagonal "Esgotado" atravessando o card esgotado. As pontas saem do card
+   e são cortadas pelo overflow:hidden do .ticket-card (efeito de tarja ponta a ponta). */
+.tk-soldout-band {
+	position: absolute;
+	top: 46%;
+	left: -18%;
+	width: 136%;
+	transform: rotate(-16deg);
+	z-index: 15;
+	pointer-events: none;
+	background: rgba(185, 28, 28, .95);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, .28);
+	text-align: center;
+}
+.tk-soldout-band span {
+	display: block;
+	padding: .55rem 0;
+	font-family: var(--font-cinzel);
+	font-weight: 800;
+	font-size: 1.15rem;
+	letter-spacing: .35em;
+	text-indent: .35em;
+	text-transform: uppercase;
+	color: #fff;
+}
 .tk-foot-line { height: 2px; }
 .tk-detail-toggle {
 	width: 100%;

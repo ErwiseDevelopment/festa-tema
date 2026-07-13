@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.3.2' );
+define( 'FSDJ_THEME_VERSION', '1.3.5' );
 
 /**
  * Atualização automática do tema (servidor próprio + Update URI).
@@ -291,6 +291,15 @@ function fsdj_sanitize_checkbox( $checked ) {
 }
 
 /**
+ * Estado "Esgotado" padrão de cada modalidade, antes de qualquer ajuste no Customizer.
+ * O Ingresso Vitória (gratuito) já nasce ESGOTADO; as demais nascem disponíveis.
+ * Pode ser revertido a qualquer momento em Aparência → Personalizar → "FSDJ — Ingressos (Esgotado)".
+ */
+function fsdj_soldout_default( $tier ) {
+	return ( 'vitoria' === $tier ) ? 1 : 0;
+}
+
+/**
  * Customizer — marcar/desmarcar cada modalidade de ingresso como Esgotado.
  */
 function fsdj_customize_register_tickets( $wp_customize ) {
@@ -303,7 +312,7 @@ function fsdj_customize_register_tickets( $wp_customize ) {
 	foreach ( fsdj_ticket_tiers() as $tier => $label ) {
 		$key = 'fsdj_soldout_' . str_replace( '-', '_', $tier );
 		$wp_customize->add_setting( $key, array(
-			'default'           => 0,
+			'default'           => fsdj_soldout_default( $tier ),
 			'sanitize_callback' => 'fsdj_sanitize_checkbox',
 		) );
 		$wp_customize->add_control( $key, array(
@@ -320,5 +329,5 @@ add_action( 'customize_register', 'fsdj_customize_register_tickets' );
  */
 function fsdj_is_sold_out( $tier ) {
 	$key = 'fsdj_soldout_' . str_replace( '-', '_', $tier );
-	return (bool) get_theme_mod( $key, 0 );
+	return (bool) get_theme_mod( $key, fsdj_soldout_default( $tier ) );
 }

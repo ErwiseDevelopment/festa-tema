@@ -174,6 +174,10 @@ usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 				<div class="tk-wrap reveal reveal--rotate" data-open="false" data-tk-slug="<?php echo esc_attr( $slug ); ?>" style="--i:<?php echo (int) $idx; ?>">
 					<div class="ticket-card" data-tier="<?php echo esc_attr( $t['tier'] ); ?>">
 
+						<?php if ( fsdj_is_sold_out( $t['tier'] ) ) : ?>
+							<div class="tk-soldout-band" aria-hidden="true"><span>Esgotado</span></div>
+						<?php endif; ?>
+
 						<?php if ( $t['badge'] ) : ?>
 							<div class="tk-badge"><span><?php echo esc_html( $t['badge'] ); ?></span></div>
 						<?php endif; ?>
@@ -200,10 +204,18 @@ usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 								<?php endforeach; ?>
 							</div>
 
-							<?php if ( fsdj_is_sold_out( $t['tier'] ) ) : ?>
-								<div class="tk-price tk-price--soldout">
-									<p class="tk-price__main">ESGOTADO</p>
-								</div>
+							<?php if ( fsdj_is_sold_out( $t['tier'] ) ) :
+								$fsdj_is_free = ( 'Gratuito' === trim( $t['price'] ) );
+							?>
+								<?php if ( $fsdj_is_free ) : ?>
+									<div class="tk-price tk-price--soldout tk-price--free-soldout">
+										<p class="tk-price__main">Gratuito</p>
+									</div>
+								<?php else : ?>
+									<div class="tk-price tk-price--soldout">
+										<p class="tk-price__main">ESGOTADO</p>
+									</div>
+								<?php endif; ?>
 
 								<div class="tk-spacer"></div>
 
