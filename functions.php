@@ -4,13 +4,46 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.3.8' );
+define( 'FSDJ_THEME_VERSION', '1.4.0' );
 
 /**
- * Atualização automática do tema (servidor próprio + Update URI).
- * Veja inc/updater.php para o passo-a-passo de como hospedar o update.json.
+ * Atualização automática do tema via GitHub (biblioteca YahnisElsts PUC v5).
+ * Mostra "Atualização disponível" no painel do WordPress e instala com 1 clique,
+ * comparando a Version do style.css no repositório com a versão instalada.
+ *
+ * Repo: https://github.com/ErwiseDevelopment/festa-tema  (PÚBLICO — não exige token).
+ * A pasta do tema ("festadosanguedejesus") difere do nome do repo ("festa-tema"),
+ * por isso o repo é informado por extenso e o slug (3º parâmetro) é a pasta.
+ *
+ * Para lançar uma versão: suba um commit na branch `main` com a Version do style.css
+ * maior que a instalada — o aviso aparece no painel em até 1h (ou na hora, ao abrir
+ * Painel → Atualizações / Aparência → Temas).
  */
-require_once get_template_directory() . '/inc/updater.php';
+$fsdj_puc_loader = get_template_directory() . '/plugin-update-checker/plugin-update-checker.php';
+if ( is_readable( $fsdj_puc_loader ) ) {
+	require $fsdj_puc_loader;
+
+	$fsdj_update_checker = \YahnisElsts\PluginUpdateChecker\v5\PucFactory::buildUpdateChecker(
+		'https://github.com/ErwiseDevelopment/festa-tema/',
+		get_template_directory() . '/functions.php',
+		'festadosanguedejesus', // slug = pasta do tema (não o nome do repo).
+		1                        // checagem de fundo a cada 1h.
+	);
+
+	$fsdj_update_checker->setBranch( 'main' );
+
+	// Repo é público; se um dia virar privado, defina MEU_GH_TOKEN no wp-config.php.
+	if ( defined( 'MEU_GH_TOKEN' ) && MEU_GH_TOKEN ) {
+		$fsdj_update_checker->setAuthentication( MEU_GH_TOKEN );
+	}
+
+	// Checagem imediata ao abrir as telas de Atualizações/Temas.
+	foreach ( array( 'load-update-core.php', 'load-themes.php' ) as $fsdj_puc_hook ) {
+		add_action( $fsdj_puc_hook, array( $fsdj_update_checker, 'checkForUpdates' ) );
+	}
+
+	unset( $fsdj_puc_loader, $fsdj_puc_hook );
+}
 
 /**
  * Theme setup
