@@ -854,8 +854,10 @@ p { margin: 0; }
 	transition: transform .3s ease;
 }
 .tk-cta:hover { transform: scale(1.02); color: #fff; }
-/* Esgotado: preço e botão neutralizados */
-.tk-price--soldout .tk-price__main {
+/* Esgotado: preço em VERMELHO, botão CINZA (desabilitado).
+   Prefixado com .ticket-card p/ vencer as cores do tier definidas mais abaixo
+   (.ticket-card .tk-price__main / .tk-cta) — mesma especificidade, mas vêm depois. */
+.ticket-card .tk-price--soldout .tk-price__main {
 	color: #b91c1c;
 	letter-spacing: .15em;
 }
@@ -866,7 +868,7 @@ p { margin: 0; }
 	box-shadow: none;
 }
 .tk-cta--soldout:hover { transform: none; color: rgba(255, 255, 255, .55); }
-.ticket-card .tk-cta--soldout { background: rgba(120, 120, 120, .25); box-shadow: none; }
+.ticket-card .tk-cta.tk-cta--soldout { background: rgba(120, 120, 120, .25); box-shadow: none; }
 .tk-foot-line { height: 2px; }
 .tk-detail-toggle {
 	width: 100%;
