@@ -91,6 +91,28 @@ $tickets = array(
 		),
 	),
 	array(
+		'tier'         => 'vitoria-promo',
+		'name'         => 'INGRESSO VITÓRIA',
+		'tag'          => 'Presencial – Promocional Social',
+		'subtitle'     => array(
+			'Acesso a 2 dias (dias 25 e 26 de julho de 2026).',
+			'Valor promocional R$ 30 reais + 1kg de alimento não perecível.',
+		),
+		'price'        => "R$ 30,00\n+ 1kg de alimento",
+		'total'        => '',
+		'badge'        => '',
+		'active'       => array( 0 ),
+		'cta_link_key' => 'ingresso_promocional',
+		'details'      => array(
+			array( 'text' => 'Acesso a 2 dias (dias 25 e 26 de julho de 2026).', 'bold' => true ),
+			array( 'text' => 'Ingresso solidário: este ingresso é uma forma de você ir à Festa do Sangue de Jesus e ainda ajudar a Comunidade Água Viva. Além do valor de R$ 30,00 do ingresso, você levará 1 kg de alimento não perecível.' ),
+			array( 'text' => 'Nota: Sujeito à disponibilidade de lote.' ),
+			array( 'text' => 'Não incluso kits.' ),
+			array( 'text' => 'Não inclui lugar reservado.' ),
+			array( 'text' => 'Este ingresso não dá acesso à entrada no dia 24 (sexta-feira).', 'red' => true ),
+		),
+	),
+	array(
 		'tier'         => 'eu-sou',
 		'name'         => "INGRESSO\nEU SOU VITORIOSO",
 		'tag'          => 'Presencial - Promocional Social',
@@ -134,7 +156,7 @@ $tickets = array(
  * Ordem de exibição dos cards (do social/gratuito ao mais completo).
  * Basta reordenar os tiers abaixo para mudar a sequência, sem mexer nos blocos acima.
  */
-$fsdj_ticket_order = array( 'vitoria', 'vitoria-hoje', 'eu-sou', 'gota', 'highlight', 'premium' );
+$fsdj_ticket_order = array( 'vitoria', 'vitoria-promo', 'vitoria-hoje', 'eu-sou', 'gota', 'highlight', 'premium' );
 usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 	return array_search( $a['tier'], $fsdj_ticket_order, true ) <=> array_search( $b['tier'], $fsdj_ticket_order, true );
 } );

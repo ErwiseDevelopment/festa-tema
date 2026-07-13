@@ -964,6 +964,7 @@ p { margin: 0; }
 .ticket-card[data-tier="highlight"]    { --tk-accent: var(--c-tier-highlight);    --tk-accent-rgb: 0, 54, 75;   }
 .ticket-card[data-tier="gota"]         { --tk-accent: var(--c-tier-gota);         --tk-accent-rgb: 64, 2, 63;   }
 .ticket-card[data-tier="vitoria"]      { --tk-accent: var(--c-tier-vitoria);      --tk-accent-rgb: 31, 77, 43;  }
+.ticket-card[data-tier="vitoria-promo"]{ --tk-accent: #1f6b4d;                     --tk-accent-rgb: 31, 107, 77; }
 .ticket-card[data-tier="eu-sou"]       { --tk-accent: var(--c-tier-eu-sou);       --tk-accent-rgb: 61, 27, 92;  }
 .ticket-card[data-tier="vitoria-hoje"] { --tk-accent: var(--c-tier-vitoria-hoje); --tk-accent-rgb: 92, 58, 0;   }
 /* Esgotado: card INTEIRO em tons de cinza (banner, ícones, linha, preço, botão),

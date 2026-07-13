@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.4.0' );
+define( 'FSDJ_THEME_VERSION', '1.4.1' );
 
 /**
  * Atualização automática do tema via GitHub (biblioteca YahnisElsts PUC v5).
@@ -119,6 +119,7 @@ function fsdj_config() {
 		'email'                => 'contato@festadosanguedejesus.com.br',
 		'doacao'               => 'https://doacoesfestadosangue.doardigital.com.br/doacao',
 		'ingresso_gratuito'    => 'https://eventos.comunidadeaguaviva.com/evento/ingresso-gratuito',
+		'ingresso_promocional' => 'https://eventos.comunidadeaguaviva.com/evento/ingresso',
 		'ingresso_online'      => 'https://eventos.comunidadeaguaviva.com/evento/ingresso-online',
 		'ingresso_vitoria'     => 'https://eventos.comunidadeaguaviva.com/evento/ingresso-vip',
 		'ingresso_experiencia' => 'https://eventos.comunidadeaguaviva.com/evento/ingresso-experiencia',
@@ -151,6 +152,7 @@ function fsdj_customize_register( $wp_customize ) {
 		'email'                => array( 'label' => 'E-mail de contato',            'type' => 'text' ),
 		'doacao'               => array( 'label' => 'Link de Doação',               'type' => 'url' ),
 		'ingresso_gratuito'    => array( 'label' => 'URL Ingresso Vitória (free)',   'type' => 'url' ),
+		'ingresso_promocional' => array( 'label' => 'URL Ingresso Vitória (promo)',  'type' => 'url' ),
 		'ingresso_online'      => array( 'label' => 'URL Passaporte Gota (online)',  'type' => 'url' ),
 		'ingresso_vitoria'     => array( 'label' => 'URL Passaporte Vitorioso',      'type' => 'url' ),
 		'ingresso_experiencia' => array( 'label' => 'URL Desperta Vitorioso',        'type' => 'url' ),
@@ -311,6 +313,7 @@ function fsdj_ticket_tiers() {
 		'highlight'    => 'Passaporte Vitorioso',
 		'gota'         => 'Passaporte Gotas de Misericórdia',
 		'vitoria'      => 'Ingresso Vitória (gratuito)',
+		'vitoria-promo' => 'Ingresso Vitória (promocional)',
 		'eu-sou'       => 'Ingresso Eu Sou Vitorioso',
 		'vitoria-hoje' => 'Ingresso Vitória de Hoje',
 	);
