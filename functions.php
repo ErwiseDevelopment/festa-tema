@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.3.5' );
+define( 'FSDJ_THEME_VERSION', '1.3.8' );
 
 /**
  * Atualização automática do tema (servidor próprio + Update URI).
@@ -276,7 +276,7 @@ function fsdj_ticket_tiers() {
 	return array(
 		'premium'      => 'Passaporte Desperta Vitorioso',
 		'highlight'    => 'Passaporte Vitorioso',
-		'gota'         => 'Passaporte Gota da Vitória',
+		'gota'         => 'Passaporte Gotas de Misericórdia',
 		'vitoria'      => 'Ingresso Vitória (gratuito)',
 		'eu-sou'       => 'Ingresso Eu Sou Vitorioso',
 		'vitoria-hoje' => 'Ingresso Vitória de Hoje',

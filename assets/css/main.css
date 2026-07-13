@@ -955,6 +955,9 @@ p { margin: 0; }
 	color: var(--c-gold);
 	flex-shrink: 0;
 }
+/* Detalhe em destaque VERMELHO (ex.: "não dá acesso ao dia 24"). */
+.tk-details__inner p.is-red { color: #b91c1c; font-weight: 700; opacity: 1; }
+.tk-details__inner p.is-red::before { color: #b91c1c; }
 
 /* Per-tier accent colors (com versão RGB pra rgba sem color-mix) */
 .ticket-card[data-tier="premium"]      { --tk-accent: var(--c-tier-premium);      --tk-accent-rgb: 104, 7, 24;  }
@@ -963,6 +966,10 @@ p { margin: 0; }
 .ticket-card[data-tier="vitoria"]      { --tk-accent: var(--c-tier-vitoria);      --tk-accent-rgb: 31, 77, 43;  }
 .ticket-card[data-tier="eu-sou"]       { --tk-accent: var(--c-tier-eu-sou);       --tk-accent-rgb: 61, 27, 92;  }
 .ticket-card[data-tier="vitoria-hoje"] { --tk-accent: var(--c-tier-vitoria-hoje); --tk-accent-rgb: 92, 58, 0;   }
+/* Esgotado: card INTEIRO em tons de cinza (banner, ícones, linha, preço, botão),
+   sobrescrevendo a cor do tier. A faixa "Esgotado" tem cor própria e segue vermelha. */
+.ticket-card.is-soldout { --tk-accent: #6b7280; --tk-accent-rgb: 107, 114, 128; border-color: rgba(107, 114, 128, .35); }
+.ticket-card.is-soldout .tk-banner__tag { color: rgba(255, 255, 255, .85); }
 .ticket-card .tk-banner    { background: linear-gradient(135deg, var(--tk-accent), rgba(var(--tk-accent-rgb), .8)); }
 .ticket-card .tk-icon[data-active="true"] {
 	border-color: var(--tk-accent);

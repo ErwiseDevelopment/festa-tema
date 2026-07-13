@@ -21,25 +21,27 @@ $tickets = array(
 		'tier'         => 'premium',
 		'name'         => "PASSAPORTE\nDESPERTA VITORIOSO",
 		'tag'          => 'Presencial',
-		'subtitle'     => 'Incluso 3 dias de evento 24, 25 e 26 de Julho (Participe na noite do dia 24 do Terço da Vitória às 20h.)',
+		'subtitle'     => array(
+			'Acesso a 3 dias do evento (dias 24, 25 e 26 de julho).',
+			'Uma vivência especial! Além de garantir seu lugar reservado na frente, você terá uma experiência única no dia 24/07, às 20h, participando do Terço do Sangue de Jesus.',
+		),
 		'price'        => '12x de R$ 229,97',
 		'total'        => 'R$ 2.759,64',
 		'badge'        => 'MAIS COMPLETO',
 		'active'       => array( 0, 1, 2, 3, 4, 5 ),
 		'cta_link_key' => 'ingresso_experiencia',
 		'details'      => array(
-			array( 'text' => 'Acesso aos dias 24, 25 e 26 de Julho.', 'bold' => true ),
-			array( 'text' => 'A experiência completa e inesquecível! Além de garantir seu lugar na frente, você terá uma vivência exclusiva na Comunidade Água Viva no dia 24/07. Participe da Live do Terço da Vitória às 20h.', 'bold' => true ),
-			array( 'text' => 'Lugar reservado próximo ao palco' ),
-			array( 'text' => 'Kit do passaporte (terço, cruz, livro "7 Gotas de Vitória", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta, ato de consagração impresso e brindes naturais da comunidade)' ),
-			array( 'text' => 'Incluso um ano de acesso à plataforma EAD CAV (Caminho de Cura Água Viva)' ),
+			array( 'text' => 'Acesso aos dias 24, 25 e 26 de julho. Chegue com antecedência, abertura do check-in às 18h.', 'bold' => true ),
+			array( 'text' => 'Lugar reservado na frente.' ),
+			array( 'text' => 'Kit do passaporte (terço, cruz, livro "Colecionadores de Milagres", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta, ato de consagração impresso e brindes naturais da comunidade).' ),
+			array( 'text' => 'Incluso um ano de acesso à plataforma EAD CAV (Caminho de Cura Água Viva).' ),
 		),
 	),
 	array(
 		'tier'         => 'highlight',
 		'name'         => 'PASSAPORTE VITORIOSO',
 		'tag'          => 'Presencial',
-		'subtitle'     => 'Acesso aos dias 25 e 26 de Julho com kit exclusivo, assento reservado e 1 ano de acesso ao EAD CAV',
+		'subtitle'     => 'Acesso a 2 dias (dias 25 e 26 de julho) com kit do passaporte, assento reservado e 1 ano de acesso ao EAD CAV.',
 		'price'        => '12x de R$ 99,97',
 		'total'        => 'R$ 1.199,64',
 		'badge'        => '',
@@ -47,26 +49,27 @@ $tickets = array(
 		'cta_link_key' => 'ingresso_vitoria',
 		'details'      => array(
 			array( 'text' => 'Acesso aos dias 25 e 26 de julho.', 'bold' => true ),
-			array( 'text' => 'Kit Vitorioso (terço, cruz, livro "7 Gotas de Vitória", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta, ato de consagração impresso)' ),
-			array( 'text' => 'Assento reservado na fileira posterior ao Passaporte Desperta Vitorioso' ),
-			array( 'text' => 'Incluso um ano de acesso à plataforma EAD CAV (Caminho de Cura Água Viva)' ),
-			array( 'text' => 'Esse passaporte não dá acesso a entrada no dia 24 (sexta-feira)', 'bold' => true ),
+			array( 'text' => 'Kit Vitorioso (terço, cruz, livro "Colecionadores de Milagres", sinal, vela, chaveiro, caderno, caneta, caneca, camiseta e ato de consagração impresso).' ),
+			array( 'text' => 'Assento reservado na fileira posterior ao Passaporte Desperta Vitorioso.' ),
+			array( 'text' => 'Incluso um ano de acesso à plataforma EAD CAV (Caminho de Cura Água Viva).' ),
+			array( 'text' => 'Este passaporte não dá acesso à entrada no dia 24 (sexta-feira).', 'red' => true ),
 		),
 	),
 	array(
 		'tier'         => 'gota',
-		'name'         => "PASSAPORTE\nGOTA DA VITÓRIA",
-		'tag'          => 'Online',
-		'subtitle'     => 'Para quem está longe e quer ajudar a festa',
+		'name'         => "PASSAPORTE\nGOTAS DE MISERICÓRDIA",
+		'tag'          => 'Online - Social',
+		'subtitle'     => 'Uma forma de você ajudar mais vidas a participarem da transmissão do evento.',
 		'price'        => "R$ 49,90\nON-LINE",
 		'total'        => '',
 		'badge'        => '',
 		'active'       => array( 6, 7 ),
 		'cta_link_key' => 'ingresso_online',
 		'details'      => array(
-			array( 'text' => 'Transmissão via plataforma própria', 'bold' => true ),
-			array( 'text' => 'E-book "Desperta Vitorioso" e Ato de Consagração Digital' ),
-			array( 'text' => 'Esta modalidade não permite a participação presencial.', 'bold' => true ),
+			array( 'text' => 'Este ingresso é uma forma nobre de ajudar, pois a transmissão do evento é totalmente gratuita por meio do YouTube. Se você quer fazer parte deste movimento de transformação de vidas, sua ajuda é aceita com muita gratidão. Além disso, você receberá:', 'bold' => true ),
+			array( 'text' => 'Transmissão via plataforma própria.' ),
+			array( 'text' => 'Kit Digital (E-book "Especial" e Ato de Consagração) — você receberá no seu e-mail no dia do evento.' ),
+			array( 'text' => 'Atenção: Esta modalidade não permite a participação presencial.', 'bold' => true ),
 		),
 	),
 	array(
@@ -84,43 +87,45 @@ $tickets = array(
 			array( 'text' => 'Acesso aos dias 25 e 26 de julho de 2026' ),
 			array( 'text' => 'Não incluso kits' ),
 			array( 'text' => 'Sujeito à disponibilidade de lote.' ),
-			array( 'text' => 'Esse passaporte não dá acesso a entrada no dia 24 (sexta-feira)', 'bold' => true ),
+			array( 'text' => 'Este passaporte não dá acesso à entrada no dia 24 (sexta-feira).', 'red' => true ),
 		),
 	),
 	array(
 		'tier'         => 'eu-sou',
 		'name'         => "INGRESSO\nEU SOU VITORIOSO",
-		'tag'          => 'Presencial',
-		'subtitle'     => 'Acesso aos 3 dias do evento (24, 25 e 26/07) com vivência exclusiva na Comunidade Água Viva',
+		'tag'          => 'Presencial - Promocional Social',
+		'subtitle'     => array(
+			'Incluso 3 dias de evento (24, 25 e 26 de Julho de 2026). Participe do dia 24/07 às 20h.',
+			'Uma vivência especial! Além de garantir seu lugar reservado na frente, você terá uma experiência única no dia 24/07, às 20h, participando do Terço do Sangue de Jesus.',
+		),
 		'price'        => '12x de R$ 29,90',
 		'total'        => 'R$ 358,80',
 		'badge'        => '',
 		'active'       => array( 0, 1, 2, 8 ),
 		'cta_link_key' => 'ingresso_eu_sou',
 		'details'      => array(
-			array( 'text' => 'Acesso aos dias 24, 25 e 26 de julho de 2026', 'bold' => true ),
-			array( 'text' => 'Além de garantir seu lugar na frente, você terá uma vivência exclusiva na Comunidade Água Viva no dia 24/07. Participe da Live do Terço da Vitória e desfrute de um momento íntimo.', 'bold' => true ),
-			array( 'text' => 'Lugar premium reservado' ),
-			array( 'text' => 'Não incluso kits' ),
+			array( 'text' => 'Acesso aos dias 24, 25 e 26 de julho. Chegue com antecedência, abertura do check-in às 18h.', 'bold' => true ),
+			array( 'text' => 'Lugar reservado na frente.' ),
+			array( 'text' => 'Não inclui kits.' ),
 			array( 'text' => 'Sujeito à disponibilidade de lote.' ),
 		),
 	),
 	array(
 		'tier'         => 'vitoria-hoje',
 		'name'         => "INGRESSO\nVITÓRIA DE HOJE",
-		'tag'          => 'Presencial',
-		'subtitle'     => 'Acesso aos dias 25 e 26/07 com lugar premium reservado',
+		'tag'          => 'Presencial - Promocional Social',
+		'subtitle'     => 'Acesso aos dias 25 e 26/07 com lugar reservado.',
 		'price'        => '12x de R$ 20,97',
 		'total'        => 'R$ 251,64',
 		'badge'        => '',
 		'active'       => array( 0, 8 ),
 		'cta_link_key' => 'ingresso_vitoria_hoje',
 		'details'      => array(
-			array( 'text' => 'Acesso aos dias 25 e 26 de julho de 2026', 'bold' => true ),
-			array( 'text' => 'Lugar premium reservado' ),
-			array( 'text' => 'Não incluso kits' ),
+			array( 'text' => 'Acesso aos dias 25 e 26 de julho de 2026.', 'bold' => true ),
+			array( 'text' => 'Lugar reservado.' ),
+			array( 'text' => 'Não incluso kits.' ),
 			array( 'text' => 'Sujeito à disponibilidade de lote.' ),
-			array( 'text' => 'Esse passaporte não dá acesso a entrada no dia 24 (sexta-feira)', 'bold' => true ),
+			array( 'text' => 'Este passaporte não dá acesso à entrada no dia 24 (sexta-feira).', 'red' => true ),
 		),
 	),
 );
@@ -172,7 +177,7 @@ usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 				$slug = sanitize_title( $t['name'] . '-' . $idx );
 			?>
 				<div class="tk-wrap reveal reveal--rotate" data-open="false" data-tk-slug="<?php echo esc_attr( $slug ); ?>" style="--i:<?php echo (int) $idx; ?>">
-					<div class="ticket-card" data-tier="<?php echo esc_attr( $t['tier'] ); ?>">
+					<div class="ticket-card<?php echo fsdj_is_sold_out( $t['tier'] ) ? ' is-soldout' : ''; ?>" data-tier="<?php echo esc_attr( $t['tier'] ); ?>">
 
 						<?php if ( fsdj_is_sold_out( $t['tier'] ) ) : ?>
 							<div class="tk-soldout-band" aria-hidden="true"><span>Esgotado</span></div>
@@ -191,7 +196,9 @@ usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 						</div>
 
 						<div class="tk-body">
-							<p class="tk-subtitle"><?php echo esc_html( $t['subtitle'] ); ?></p>
+							<?php foreach ( (array) $t['subtitle'] as $fsdj_sub ) : ?>
+								<p class="tk-subtitle"><?php echo esc_html( $fsdj_sub ); ?></p>
+							<?php endforeach; ?>
 
 							<div class="tk-icons">
 								<?php foreach ( $benefits as $bi => $b ) :
@@ -249,7 +256,7 @@ usort( $tickets, function ( $a, $b ) use ( $fsdj_ticket_order ) {
 					<div class="tk-details">
 						<div class="tk-details__inner">
 							<?php foreach ( $t['details'] as $d ) : ?>
-								<p class="<?php echo ! empty( $d['bold'] ) ? 'is-bold' : ''; ?>"><?php echo esc_html( $d['text'] ); ?></p>
+								<p class="<?php echo esc_attr( trim( ( ! empty( $d['bold'] ) ? 'is-bold ' : '' ) . ( ! empty( $d['red'] ) ? 'is-red' : '' ) ) ); ?>"><?php echo esc_html( $d['text'] ); ?></p>
 							<?php endforeach; ?>
 						</div>
 					</div>
