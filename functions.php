@@ -4,7 +4,7 @@
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
-define( 'FSDJ_THEME_VERSION', '1.4.1' );
+define( 'FSDJ_THEME_VERSION', '1.4.2' );
 
 /**
  * Atualização automática do tema via GitHub (biblioteca YahnisElsts PUC v5).
@@ -191,9 +191,9 @@ add_filter( 'fsdj_config', function ( $cfg ) {
  */
 function fsdj_sponsor_slots() {
 	return array(
-		'ouro'   => array( 'label' => 'Ouro',   'count' => 6 ),
-		'prata'  => array( 'label' => 'Prata',  'count' => 8 ),
-		'bronze' => array( 'label' => 'Bronze', 'count' => 12 ),
+		'ouro'   => array( 'label' => 'Ouro',   'count' => 10 ),
+		'prata'  => array( 'label' => 'Prata',  'count' => 12 ),
+		'bronze' => array( 'label' => 'Bronze', 'count' => 16 ),
 	);
 }
 
@@ -255,7 +255,7 @@ function fsdj_get_sponsors() {
  * Aumentar o número caso precise de mais espaços.
  */
 function fsdj_apoiador_slots() {
-	return 12;
+	return 16;
 }
 
 /**
